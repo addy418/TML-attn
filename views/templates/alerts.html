@@ -1,0 +1,345 @@
+<script type="text/ng-template" id="customTemplate.html">
+  <a>
+      <img ng-src="http://upload.wikimedia.org/wikipedia/commons/thumb/{{match.model.flag}}" width="16">
+      <span ng-bind-html="match.label | uibTypeaheadHighlight:query"></span>
+  </a>
+</script>
+<header class="header-inner-top-one">
+  <div class="intro-text" style="padding-top: 45px;"></div>
+</header>
+<section id="cart" class="bg-light-gray roboto-c" style="background-color: #f2f2f2;">
+  <!-- ===========================  Error Handling Messages  ========================  -->
+  
+  <div class="container" >
+    <div class="row">
+    <div class="col-md-3 sidebar" style="background-color:#203470">
+        <div class="panel-heading static-filter" style="background-color:#203470">
+        <span class="panel-title opened" >
+         <span style="font-size: 17px;">&nbsp;&nbsp;&nbsp;Menu</span>
+        </span>
+      </div>
+      <ul class="list-group opened static-filterul">
+<!-- start liss -->
+
+          <!-- ========================================== Domains  ========================================-->
+         <li ng-class="getAlertsclass()" id="domains_list" ng-click="showalerts=false"  >
+            <h4>
+              <span>Alerts</span>
+            
+            </h4>
+          </li>
+          
+                  
+          <!-- ========================================== Devices ========================================-->
+          <li ng-class="getSOSclass()"  id="devices_list"   ng-click="showalerts=true" >
+            <h4>
+              <span >SOS</span>
+           </h4>
+          </li>
+         
+         
+<!-- end liss -->
+
+      </ul>
+    </div>
+    <div class="col-md-9 tab-content" >
+    
+        
+    <div class="row " style="padding-top:30px" ng-hide="showalerts">
+      <div class="col-lg-12 adjustBtmMargin ng-scope" id="dashboard">
+
+  <div class="row">
+    <div class="col-lg-3 col-sm-6 col-md-3">
+
+      <div class="panel widget bg-color-gray" >
+        <div class="row row-table">
+          <div class="col-xs-4 text-center bg-color-darkgray pv-lg">
+            <em class="fa fa-users fa-3x"></em>
+          </div>
+          <div class="col-xs-8 pv-lg bg-color-gray">
+            <div class="h2 mt0 ng-binding">213 </div>
+            <div>Users</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3 col-sm-6 col-md-3 WidthAdjustSmall">
+
+      <div class="panel widget bg-color-gray" >
+        <div class="row row-table">
+          <div class="col-xs-4 text-center bg-color-darkgray pv-lg">
+            <em class="fa fa-bell fa-3x"></em>
+          </div>
+          <div class="col-xs-8 pv-lg bg-color-gray">
+            <div class="h2 mt0 ng-binding">{{alertsCount}}</div>
+            <div>Alerts</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3 col-sm-6 col-md-3 paddingZero">
+
+      <div class="panel widget bg-color-gray">
+        <div class="row row-table">
+          <div class="col-xs-4 text-center bg-color-darkgray pv-lg">
+            <em class="fa fa-exclamation-triangle fa-3x"></em>
+          </div>
+          <div class="col-xs-8 pv-lg bg-color-gray">
+            <div class="h2 mt0 ng-binding">{{sosCount}}</div>
+            <div class="customMargin">SOS</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3 col-sm-6 col-md-3 WidthAdjustBig">
+
+      <div class="panel widget bg-color-gray">
+        <div class="row row-table">
+          <div class="col-xs-4 text-center bg-color-darkgray pv-lg">
+            <em class="fa fa-car fa-3x"></em>
+          </div>
+          <div class="col-xs-8 pv-lg bg-color-gray">
+            <div class="h2 mt0 ng-binding">{{parkings}}</div>
+            <div class="customMargin">Parkings Available</div>
+          </div>
+        </div>
+      </div>
+      <!-- END date widget    -->
+    </div>
+  </div>
+    </div>
+        </div>
+        
+        
+        <div class="row col-md-9 tab-content"  >
+      <div class="pull-right">
+        <button class="btn btn-lg btn-done no-curve hidden-xs" style="background:#203470" ng-if="!showalerts" id="addUsers" ng-click="addUserPopup()" >Add Alert
+		<!--	<span class="badge user-count-badge" style="top: 10px;" ng-if = "!(users.length == 0)">{{users.length}}</span>-->
+		</button>
+      
+      </div>
+    </div>
+        
+        
+    <div class="container-fluid">
+      <div class="row">
+    
+        <!-- CAUTION: FOLLOWING BLOCKS ARE SPECIFIC TO DEVICE WIDTH. -->
+        <div class="custom-pagination hidden-md hidden-xs hidden-sm visible-lg">
+        
+ <!--  <small>Tables, one step forward.</small>
+-->
+<div  class="container-fluid" ng-hide="showalerts">
+   <!-- START DATATABLE 1 -->
+   <div class="row">
+     <h3>Alerts
+<!--   <small>Tables in the AngularJS way</small>-->
+</h3>
+<div ng-controller="NGTableCtrl as table" class="container-fluid">
+   <!-- Row Select Example-->
+   <div class="panel panel-default">
+      <div class="panel-heading">
+         <button ng-click="table.tableParams3.data[1].$selected = true" class="pull-right btn-sm btn btn-default">Select 2nd Row</button>
+         <div class="panel-title"> &nbsp;</div>
+      </div>
+      <table ng-table="table.tableParams3" class="table ng-table-rowselected">
+         <tr ng-repeat="alert in $data" ng-click="alert.$selected = !alert.$selected; changeSelection(alert)" ng-class="{'active': alert.$selected}">
+            <td data-title="'Alert Text'">{{alert.alerts_text}}</td>
+            <td data-title="'Zone'">{{alert.alert_zone}}</td>
+             <td data-title="'Time'">{{alert.createdAt | date:' MMMM d, y'}} &nbsp;&nbsp;&nbsp;{{alert.createdAt | date:'HH:mm'}}</td>
+         </tr>
+      </table>
+     <!-- <div class="panel-body">
+         <strong>Selected users:</strong>{{ table.data | filter:{"$selected": true} }}</div>
+   </div>
+        -->
+
+            </div>
+       </div>
+    </div>
+    </div>
+<div  class="container-fluid " ng-show="showalerts" style="padding-top:20px">
+   <!-- START DATATABLE 1 -->
+    <!-- START DATATABLE 1 -->
+   <div class="row">
+     <h3>SOS
+<!--   <small>Tables in the AngularJS way</small>-->
+</h3>
+<div ng-controller="NGTableCtrl1 as table" class="container-fluid">
+   <!-- Row Select Example-->
+   <div class="panel panel-default">
+      <div class="panel-heading">
+         <button ng-click="table.tableParams3.data[1].$selected = true" class="pull-right btn-sm btn btn-default">Select 2nd Row</button>
+         <div class="panel-title">  &nbsp;</div>
+      </div>
+      <table ng-table="table.tableParams3" class="table ng-table-rowselected">
+         <tr ng-repeat="sos in $data" ng-click="sos.$selected = !sos.$selected; changeSelection(sos)" ng-class="{'active': sos.$selected}">
+            <td data-title="'SOS Text'">{{sos.sos_text }}</td>
+            <td data-title="'Request by'">{{sos.created_by}}</td>
+             <td data-title="'Emp Id'"> {{sos.sos_by}}</td>
+             <td data-title="'Time'">{{sos.createdAt | date:' MMMM d, y '}} &nbsp;&nbsp;&nbsp;{{sos.createdAt | date:'HH:mm'}}</td>
+         </tr>
+      </table>
+     <!-- <div class="panel-body">
+         <strong>Selected users:</strong>{{ table.data | filter:{"$selected": true} }}</div>
+   </div>
+        -->
+   </div>
+   <!-- END DATATABLE 1 -->
+        
+        </div>
+
+      </div>
+      </div>
+    </div>
+ 
+  		
+<!-- above Added By Nisar -->
+
+</section>
+
+
+<!--  Add User Pop Up -->
+<script type="text/ng-template" id="addUsers.html">
+  <div id="custom-modal">
+    <div class="modal-header grayBackground">
+      <img src="img/close_icon_loginbox.png" ng-click="closePopUp()" class="pull-right pointer" style="width: 10px;">
+      <h3 class="modal-title">
+        <span class="text-muted">Add more Alerts</span>
+    </h3>
+    </div>
+    <div class="modal-body">
+      <div class="row " style="padding:10px;">
+        <div class="col-xs-12 col-md-4 form-group">
+          <input type=t ext " style= "height: 37px;font-size: 16px; " class="text form-control " placeholder="Alert text " ng-model="newAlert.alertText" />
+              </div>
+              <div class="col-xs-12 col-md-5  form-group">
+                     <input type = text" style="height: 37px;font-size: 16px;" class="text form-control" placeholder="Alert location" ng-model="newAlert.zone" />
+        </div>
+        <div class="col-xs-12 col-md-3">
+          <button class="btn yellowbtn btn-lg no-curve" ng-click="closePopUp();addAlerts(newAlert)" style="
+    padding: 6px;
+    padding-left: 10px;
+    padding-right: 10px;">
+            Add Alert
+          </button>
+        </div>
+      </div>
+     
+
+      </div>
+</script>
+
+<script type="text/ng-template" id="confirm.html">
+  <div id="custom-modal">
+    <div class="modal-body" style="padding:30px;">
+      <div class="text-center margintop20">
+        <h3 class="nilland">Do you want to add users to sandbox now?</h3>
+      </div>
+      <div class="margintop20">
+        <img class="img-responsive" style="margin: 0 auto;" src="img/user-icon.png">
+      </div>
+    </div>
+    <div class="modal-footer pop-up-button paddingbottom20">
+      <div class="col-xs-6">
+        <a href="" class="btn btn-xl btn-default pull-right" ng-click="addUserResponse(true)">Add</a>
+      </div>
+      <div class="col-xs-6">
+        <a href="" class="btn btn-xl btn-default pull-left" ng-click="addUserResponse(false)">Skip</a>
+      </div>
+    </div>
+  </div>
+</script>
+<script>
+  $("#provision-sandbox").click(function() {
+      $('#success').show(function() {
+      });
+      $('#provision-sandbox').hide();
+      $('#edit').hide();
+      $('#create-new').show();
+  });
+  $("select").change(function() {
+      if ($(this).val() === 'newEnterprise') {
+          $('#create-new-sandbox').show();
+          $('#existing-sandboxes').hide();
+      } else if ($(this).val() === 'psl-sandbox') {
+          $('#select-users').show();
+      } else {
+          $('#select-users').hide();
+      }
+  });
+  $('#add-new-sandbox').keyup(function() {
+      if ($(this).val().length != 0) {
+          $('#create-sandbox').attr('disabled', false);
+          $('#create-sandbox').addClass('btn-done');
+      } else {
+          $('#create-sandbox').attr('disabled', true);
+          $('#create-sandbox').removeClass('btn-done');
+      }
+  });
+</script>
+<script>
+$('li.filter-category a').click(function(){
+    $(this).find('i').toggleClass('fa-plus fa-minus');
+    $(this).closest('.filter-category').toggleClass('inactive-category active-category');
+});
+$('#close-filter-menu').click(function () {
+    if ($(window).width() < 767 ) {
+        $(".tab-content").show();
+        $(".sidebar").css("height", "70");
+        $(".sidebar").css("width", "100%");
+    } else if ($(window).width() < 1024) {
+        $(".sidebar").css("width", "50");
+        $('#view-experiences-btn, .tab-content').css("width", "75%");
+        $('#view-experiences-btn, .tab-content').css("margin-left", "18%");
+        $('.static-search').css("width", "70%");
+    } else {
+        $(".sidebar, .static-filter").css("width", "70");
+        $('#view-experiences-btn, .tab-content').css("width", "95%");
+        $('#view-experiences-btn, .tab-content').css("margin-left", "70px");
+        $('.static-search').css("width", "85%");
+    }
+    $('.opened').hide();
+    $('.closed').show();
+});
+$('#open-filter-menu').click(function () {
+    if ($(window).width() < 767 ) {
+        $(".sidebar").css("width", "100%");
+        $(".sidebar").css("height", "100%");
+        $(".tab-content").hide();
+    } else if($(window).width() < 1024 ) {
+        $(".sidebar, .static-filter").css("width", "215");
+        $('#view-experiences-btn, .tab-content').css("margin-left", "220px");
+        $('#view-experiences-btn, .tab-content').css("width", "72%");
+        $('.static-search').css("width", "65%");
+    } else {
+        $(".sidebar, .static-filter").css("width", "15%");
+        $('#view-experiences-btn, .tab-content').css("width", "85%");
+        $('#view-experiences-btn, .tab-content').css("margin-left", "15%");
+        $('.static-search').css("width", "75%");
+    }
+    $('.closed').hide();
+    $('.opened').show();
+});
+$('.search-exp').click(function() {
+    $('.search-input').show();
+    $('.search-exp').hide();
+    if ($(window).width() < 1024) {
+        $('.exp-search-xs').hide();
+    }
+});
+$('.search-input span').click(function() {
+    $('.search-input').hide();
+    $('.search-exp').css("display", "inline-block");
+    if ($(window).width() < 1024) {
+        $('.exp-search-xs').css("display", "inline-block");
+    }
+});
+</script>
+<style type="text/css">
+.myGrid {
+    border: 1px solid rgb(212,212,212);
+    width: 900px; 
+    height: auto;
+}
+      </style>
