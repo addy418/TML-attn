@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="experienceApp">
+
+<head>
+
+    <!--<base href="/">-->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- meta tags to disable browser caching  -->
+    <meta http-equiv="cache-control" content="max-age=0" />
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta http-equiv="expires" content="0" />
+    <meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
+    <meta http-equiv="pragma" content="no-cache" />    
+
+    <!-- check if site under maintainance-->
+   
+
+    <title>AppEase</title>
+    <script type="text/javascript" src="services/superAppConfig.js"></script>	
+    <script type="text/javascript" src="vendor/jquery.js"></script>
+	<script type="text/javascript" src="vendor/classie.js"></script>	
+    <script type="text/javascript" src="vendor/bootstrap/bootstrap.js"></script>
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+    <script type="text/javascript" src="vendor/utilitie.js"></script>
+    <script type="text/javascript" src="vendor/cbpAnimatedHeader.js"></script>
+    <script type="text/javascript" src="vendor/agency.js"></script>
+    
+    
+	<script type="text/javascript" src="vendor/angular.min.js"></script>
+	<script type="text/javascript" src="vendor/angular-ui-router.js"></script>	
+	<script type="text/javascript" src="vendor/angular-animate.js"></script>
+	<script type="text/javascript" src="vendor/ngStorage.min.js"></script>			
+	<script type="text/javascript" src="vendor/ui-bootstrap-tpls-1.2.4.min.js"></script>			
+
+    <script type="text/javascript" src="vendor/jquery.flot.animator.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/flot/0.8.2/jquery.flot.min.js"></script>
+     <script type="text/javascript" src="vendor/jquery.dataTables.min.js"></script>
+  <!--  <link href="vendor/datatable-bootstrap/css/dataTables.bootstrap.css" rel="stylesheet">
+     <script type="text/javascript" src="vendor/datatable-bootstrap/js/dataTables.bootstrap.js"></script>
+      <script type="text/javascript" src="vendor/datatable-bootstrap/js/dataTables.bootstrapPagination.js"></script>
+      <script type="text/javascript" src="vendor/datatables-colvis/js/dataTables.colVis.js"></script>
+        <link href="vendor/datatables-colvis/css/dataTables.colVis.css" rel="stylesheet">-->
+  <link rel="stylesheet" href="https://cdn.rawgit.com/esvit/ng-table/1.0.0/dist/ng-table.min.css">
+<script src="https://cdn.rawgit.com/esvit/ng-table/1.0.0/dist/ng-table.js"></script>
+   
+    	<link rel="stylesheet" href="http://ui-grid.info/release/ui-grid.css" type="text/css">
+  
+<!--     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/flot/0.8.2/jquery.flot.symbol.min.js"></script> -->
+<!--     <script type="text/javascript" src="http://raw.github.com/markrcote/flot-axislabels/master/jquery.flot.axislabels.js"></script> -->
+<!--     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/flot/0.8.2/jquery.flot.time.min.js"></script> -->
+ 
+
+    <!-- Bootstrap Core CSS -->
+    <link href="vendor/bootstrap/bootstrap.css" rel="stylesheet">
+    <link href="vendor/animate.css" rel="stylesheet">
+    <link href="common/css/full-slider.css" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/bootstrap-social.css" rel="stylesheet">
+
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,500,700,900&subset=latin,greek,greek-ext,vietnamese,cyrillic-ext,latin-ext,cyrillic' rel='stylesheet' type='text/css'>
+	<link href="css/login.css" rel="stylesheet">
+  
+   
+
+ 
+</head>
+
+<body id="page-top" class="index" ng-controller="appController">
+    <div id="scroll-top"></div>
+
+  
+   <topnavbar ng-hide="hiddenNavbarFooter">
+   </topnavbar>
+     <!-- Header -->
+      
+	   
+<div class="wrapper">
+ <div  ui-view class="view"></div>
+</div>
+	
+	
+  
+
+
+    
+    
+	
+	<!--  including controllers  -->
+	<script type="text/javascript" src="index.js"></script>
+	<script type="text/javascript" src="services/appRoutes.js"></script>
+	<script type="text/javascript" src="services/dataServices.js"></script>	
+	<script type="text/javascript" src="views/directives/dashboardDirectives.js"></script>	
+	<script type="text/javascript" src="controllers/alertsController.js"></script>	
+	<script type="text/javascript" src="controllers/loginController.js"></script>	
+	<script type="text/javascript" src="controllers/navbarController.js"></script>
+    
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular-touch.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular-animate.js"></script>
+    <script src="http://ui-grid.info/docs/grunt-scripts/csv.js"></script>
+    <script src="http://ui-grid.info/docs/grunt-scripts/pdfmake.js"></script>
+    <script src="http://ui-grid.info/docs/grunt-scripts/vfs_fonts.js"></script>
+<script src="http://ui-grid.info/release/ui-grid.js"></script>
+  
+</body>
+    
+
+</html>

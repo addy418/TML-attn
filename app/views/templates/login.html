@@ -1,0 +1,120 @@
+    <!-- Header -->
+    <header class="header-inner-top-one">
+         <div class="container">
+            <div class="intro-text" style="padding-top: 45px;">
+                        </div>
+    </header>
+
+
+    <!-- experiences Grid Section -->
+ <section id="login" class="bg-light-gray" >
+              
+  <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading" style="margin-bottom:20px;">Login</h2>
+                </div>
+			
+            </div>
+            <div class="row">
+                <div class="container-fluid">
+                    <div class="col-lg-6 col-lg-offset-3">
+                        <form name="sentMessage" id="contactForm" novalidate="">
+                            <div class="row">
+                                <div>
+                                     <div class="form-group">
+                                        <input ng-focus="resetUserName()" ng-class="{ 'errorinputbox-delete' : showLoginError.userName.show }" type="text" class="form-control" placeholder="Employee Id" id="Username" name="contactEmail" required="" data-validation-required-message="Please enter your Employee Id." ng-model="user.username">
+                                       
+                                    </div>
+                                    <div class="form-group">
+                                        <input ng-class="{ 'errorinputbox-delete' : showLoginError.password.show || perror }" only-digits type="password" class="form-control" placeholder="Password" id="password" name="contactpassword" required="" data-validation-required-message="Please enter your name." ng-model="user.password">
+                                                                     
+                                    </div> 
+                                </div>
+                             <!-- <div class="row">
+                                  <div class="col-xs-12">
+                                    <a href=".forgot-password" data-toggle="modal" data-target=".forgot-password" class="pull-right text-md unstyled" title="Forgot Password">Forgot Password ?</a>
+                                  </div>
+                                  <div class="row" -->
+                                    <!-- =========================================== Modal ================================================= 
+                                    <div id="myModal" class="modal fade forgot-password" role="dialog">
+                                      <div class="modal-dialog" -->
+                                        <!-- Modal content-->
+                                        <!--<div class="modal-content">
+                                          <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                            <h3 class="modal-title">
+                                              <span class="text-muted">Forgot Your Password?</span>
+                                            </h3>
+                                          </div>
+                                          <div class="modal-body text-md">
+                                            <div class="row">
+                                              <div class="col-xs-12">
+                                                <p class="text-md text-muted">Don't worry! Just fill in your email and we'll help you reset your password.</p>
+                                              </div>
+                                            </div>
+                                            <form>
+                                              <div class="row">
+                                                <div class="col-xs-12">
+                                                  <div class="form-group">
+                                                    <label for="exampleInputEmail1" class="text-muted pull-left">EMAIL ADDRESS</label>
+                                                    <input type="email" class="form-control" id="exampleInputEmail1" autofocus="true" placeholder="Email">
+                                                  </div>
+                                                </div>
+                                              </div>
+                                              <div class="row">
+                                                <div class="col-xs-12">
+                                                  <button type="button" class="btn btn-xl pull-left" data-dismiss="modal">Back To Login</button>
+                                                  <button type="button" class="btn btn-xl yellowbtn pull-right">Send Mail</button>
+                                                </div>
+                                              </div>
+                                            </form>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+      </div>
+                                </div>-->
+
+                                <div class="clearfix"></div>
+                                <div class="col-lg-12 text-center" style="margin:0px 0;">
+                                    <!-- <div style="width:600px; padding:10px; margin:0px auto;">
+                                    <div style="margin-top:-20px; margin-bottom:30px;">
+                                       <div class="checkbox">
+                                    <label style="color: #fff; float: left;">
+                                        <input type="checkbox" ng-click="addRemoveExperience(experience.isSelected,experience)" ng-model="experience.isSelected" class="ng-pristine ng-untouched ng-valid ng-empty">Remember Me</label>
+                                </div>
+                                    
+                                        
+                                        <a href="" style="float: right; color: #fff; text-decoration: none; font-size: 14px;">Forgot Password</a>
+                                        </div>
+                                    </div> -->
+                                    <div id="success">
+                                        <!--<span ng-show="sentMessage.contactEmail.$error.required||sentMessage.contactpassword.$error.required" style="color:red">{{loginErrorMsg}}</span>-->
+                                        <!--<span ng-show="(!loginData.username||!loginData.password) && (!sentMessage.contactEmail.$error.required && !sentMessage.contactpassword.$error.required)" style="color:red">{{loginErrorMsg}}</span> -->
+                                    </div>
+                                
+                                    <button type="submit"  class="btn btn-xl yellowbtn" style="margin:10px 0 20px 0; padding:10px; width:200px;" ng-click="login()">Login</button>
+                                </div>
+
+                                <!-- <h2 class="section-heading-new">OR</h2>
+                                <h2 class="section-heading-new-link">
+                                <a class="btn btn-block btn-social btn-linkedin" onclick="_gaq.push(['_trackEvent', 'btn-social', 'click', 'btn-linkedin']);">
+            <span class="fa fa-linkedin"></span> Sign in with LinkedIn
+          </a>
+                                </h2> -->
+
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+                
+    <!-- footer Grid Section -->
+    <!-- Pop ups -->
+    
+    
+    
