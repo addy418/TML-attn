@@ -1,0 +1,1129 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "TML app",
+    "description": "APIs for TML app",
+    "version": "1.0"
+  },
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json",
+    "text/xml"
+  ],
+  "host": "localhost:8080",
+  "basePath": "/v1/tml",
+  "paths": {    
+    "/locations": {
+      "get": {
+        "x-swagger-router-controller": "locationController",
+        "operationId": "getLocation",
+        "tags": [
+          "/location"
+        ],
+        "description": "Returns the list of location.",
+        "responses": {
+          "200": {
+            "description": "Successful request.",
+            "schema": {
+              "$ref": "#/definitions/Locationlist"
+            }
+          },
+          "default": {
+            "description": "Invalid request.",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "post": {
+        "x-swagger-router-controller": "locationController",
+        "operationId": "addLocation",
+        "tags": [
+          "/location"
+        ],
+        "description": "add new Location",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "locationObject",
+            "description": "The new entry",
+            "required": true,
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/Location"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "$ref": "#/definitions/Location"
+            }
+          },
+          "default": {
+            "description": "Invalid request.",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+	  "options": {
+        "x-swagger-router-controller": "locationController",
+        "operationId": "handleOption",
+        "tags": [
+          "/location"
+        ],
+        "description": "add new SOS",		
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "default": {
+            "description": "Invalid request.",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    }  ,
+    "/attendance": {
+      "post": {
+        "x-swagger-router-controller": "attendanceController",
+        "operationId": "putUserAttendance",
+        "tags": [
+          "/attendance"
+        ],
+        "description": "Post specific user's attendance.",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "attendanceObject",
+            "description": "The new Entity to create",
+            "required": true,
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/Attendance"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful request.",
+            "schema": {
+              "$ref": "#/definitions/AttendanceList"
+            }
+          },
+          "default": {
+            "description": "Invalid request.",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "options": {
+        "x-swagger-router-controller": "attendanceController",
+        "operationId": "handleOption",
+        "tags": [
+          "/attendance"
+        ],
+        "description": "add new SOS",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "default": {
+            "description": "Invalid request.",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/sos": {
+      "get": {
+        "x-swagger-router-controller": "sosController",
+        "operationId": "getSOS",
+        "tags": [
+          "/sos"
+        ],
+        "description": "Returns the list of sos.",
+        "responses": {
+          "200": {
+            "description": "Successful request.",
+            "schema": {
+              "$ref": "#/definitions/SOSList"
+            }
+          },
+          "default": {
+            "description": "Invalid request.",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "post": {
+        "x-swagger-router-controller": "sosController",
+        "operationId": "postSOS",
+        "tags": [
+          "/sos"
+        ],
+        "description": "add new SOS",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "sosObject",
+            "description": "The new Entity to create",
+            "required": true,
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/SOS"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "$ref": "#/definitions/SOS"
+            }
+          },
+          "default": {
+            "description": "Invalid request.",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },      
+      "options": {
+        "x-swagger-router-controller": "sosController",
+        "operationId": "handleOption",
+        "tags": [
+          "/sos"
+        ],
+        "description": "add new SOS",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "default": {
+            "description": "Invalid request.",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/sos/{id}": {
+      "put": {
+        "x-swagger-router-controller": "sosController",
+        "operationId": "putSOS",
+        "tags": [
+          "/sos"
+        ],
+        "description": "update SOS",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "description": "sos id",
+            "required": true,
+            "in": "path",
+            "type":"string"
+          },
+          {
+            "name": "sosObject",
+            "description": "update Entity",
+            "required": true,
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/SOS_PUT"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "$ref": "#/definitions/SOS"
+            }
+          },
+          "default": {
+            "description": "Invalid request.",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "options": {
+        "x-swagger-router-controller": "sosController",
+        "operationId": "handleOption",
+        "tags": [
+          "/sos"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "description": "sos id",
+            "required": true,
+            "in": "path",
+            "type":"string"
+          }
+        ],
+        "description": "add new SOS",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "default": {
+            "description": "Invalid request.",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/users/{id}/attendance": {
+      "get": {
+        "x-swagger-router-controller": "UserController",
+        "operationId": "getUserAttendance",
+        "tags": [
+          "/user"
+        ],
+        "description": "Returns specific user's attendance.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "user id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "startdate",
+            "in": "query",
+            "description": "startdate",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "enddate",
+            "in": "query",
+            "description": "enddate",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful request.",
+            "schema": {
+              "$ref": "#/definitions/AttendanceList"
+            }
+          },
+          "default": {
+            "description": "Invalid request.",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+	  "options": {
+        "x-swagger-router-controller": "UserController",
+        "operationId": "handleOption",
+        "tags": [
+          "/user"
+        ],
+        "description": "add new SOS",
+		"parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "user id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "startdate",
+            "in": "query",
+            "description": "startdate",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "enddate",
+            "in": "query",
+            "description": "enddate",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "default": {
+            "description": "Invalid request.",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    } ,
+	 "/users/{user_id}": {
+      "put": {
+        "x-swagger-router-controller": "UserController",
+        "operationId": "updateAlertStatus",
+        "tags": [
+          "/user"
+        ],
+        "description": "update alert status",
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "path",
+            "description": "user id",
+            "required": true,
+            "type": "string"
+          },          
+		{
+            "name": "userObject",
+            "description": "The new Entity to create",
+            "required": true,
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/User_PUT"
+            }
+          }		  
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful request.",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          },
+          "default": {
+            "description": "Invalid request.",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+	  "get": {
+        "x-swagger-router-controller": "UserController",
+        "operationId": "getAlertDetails",
+        "tags": [
+          "/user"
+        ],
+        "description": "Returns specific user's alert details",
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "path",
+            "description": "user id",
+            "required": true,
+            "type": "string"
+          }          
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful request.",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          },
+          "default": {
+            "description": "Invalid request.",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+	  "options": {
+        "x-swagger-router-controller": "UserController",
+        "operationId": "handleOption",
+        "tags": [
+          "/user"
+        ],
+        "description": "Update alert status",
+		"parameters": [
+          {
+            "name": "user_id",
+            "in": "path",
+            "description": "user id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "description": "status",
+            "required": false,
+            "type": "string"
+          }          
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "default": {
+            "description": "Invalid request.",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+     "/users": {      
+      "post": {
+        "x-swagger-router-controller": "UserController",
+        "operationId": "addUser",
+        "tags": [
+          "/user"
+        ],
+        "description": "add new User",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "userObject",
+            "description": "The new Entity to create",
+            "required": true,
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          },
+          "default": {
+            "description": "Invalid request.",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+	  "options": {
+        "x-swagger-router-controller": "UserController",
+        "operationId": "handleOption",
+        "tags": [
+          "/user"
+        ],
+        "description": "add new user details",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "default": {
+            "description": "Invalid request.",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },    
+	 "/parkingslots":{  
+         "get":{  
+            "x-swagger-router-controller":"ParkingController",
+            "operationId":"getParkingSlotCount",
+            "tags":[  
+               "/parkingslots"
+            ],
+            "description":"Returns specific alerts.",
+            "parameters":[  
+               
+            ],
+            "responses":{  
+               "200":{  
+                  "description":"Successful request.",
+                  "schema":{  
+                     "$ref":"#/definitions/Parking"
+                  }
+               },
+               "default":{  
+                  "description":"Invalid request.",
+                  "schema":{  
+                     "$ref":"#/definitions/Error"
+                  }
+               }
+            }
+         },
+		 "options": {
+        "x-swagger-router-controller": "ParkingController",
+        "operationId": "handleOption",
+        "tags": [
+          "/parkingslots"
+        ],
+        "description": "get parking slots details",		
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "default": {
+            "description": "Invalid request.",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+		 
+      },
+      "/geofences":{  
+         "get":{  
+            "x-swagger-router-controller":"GeofenceController",
+            "operationId":"getGeofenceList",
+            "tags":[  
+               "/geofences"
+            ],
+            "description":"Returns geofence list",
+            "parameters":[  
+               
+            ],
+            "responses":{  
+               "200":{  
+                  "description":"Successful request.",
+                  "schema":{  
+                     "$ref":"#/definitions/Geofence"
+                  }
+               },
+               "default":{  
+                  "description":"Invalid request.",
+                  "schema":{  
+                     "$ref":"#/definitions/Error"
+                  }
+               }
+            }
+         },
+		 "options": {
+        "x-swagger-router-controller": "GeofenceController",
+        "operationId": "handleOption",
+        "tags": [
+          "/geofences"
+        ],
+        "description": "get geofence list",		
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "default": {
+            "description": "Invalid request.",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }		 
+      },
+      "/alerts":{  
+        "post": {
+        "x-swagger-router-controller": "AlertController",
+        "operationId": "sendAlert",
+        "tags": [
+          "/alerts"
+        ],
+        "description": "sendAlert",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "alertObject",
+            "description": "sendAlert",
+            "required": true,
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/Alert"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "$ref": "#/definitions/Alert"
+            }
+          },
+          "default": {
+            "description": "Invalid request.",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+	  "get":{  
+            "x-swagger-router-controller":"AlertController",
+            "operationId":"getAlerts",
+            "tags":[  
+               "/alerts"
+            ],
+            "description":"Returns all alerts",
+            "parameters":[ 
+			    {
+            "name": "status",
+            "in": "query",
+            "description": "status",
+            "required": false,
+            "type": "string"
+          }                
+            ],
+            "responses":{  
+               "200":{  
+                  "description":"Successful request.",
+                  "schema":{  
+                     "$ref":"#/definitions/Alert"
+                  }
+               },
+               "default":{  
+                  "description":"Invalid request.",
+                  "schema":{  
+                     "$ref":"#/definitions/Error"
+                  }
+               }
+            }
+         },
+		 "options": {
+        "x-swagger-router-controller": "AlertController",
+        "operationId": "handleOption",
+        "tags": [
+          "/alerts"
+        ],
+        "description": "send alert",		
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "default": {
+            "description": "Invalid request.",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+		 
+      },
+   "/alerts/{id}": {
+      "put": {
+        "x-swagger-router-controller": "AlertController",
+        "operationId": "putAlert",
+        "tags": [
+          "/alerts"
+        ],
+        "description": "update alert",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "description": "alert id",
+            "required": true,
+            "in": "path",
+            "type":"string"
+          },
+          {
+            "name": "alertObject",
+            "description": "update Entity",
+            "required": true,
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/Alert_PUT"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "$ref": "#/definitions/Alert"
+            }
+          },
+          "default": {
+            "description": "Invalid request.",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "options": {
+        "x-swagger-router-controller": "AlertController",
+        "operationId": "handleOption",
+        "tags": [
+          "/alerts"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "description": "alert id",
+            "required": true,
+            "in": "path",
+            "type":"string"
+          }
+        ],
+        "description": "update alert",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "default": {
+            "description": "Invalid request.",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    }	  
+  },
+  "definitions": {
+    "Error": {
+      "properties": {
+        "message": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "message"
+      ]
+    },    
+    "Locationlist": {
+      "properties": {
+        "result": {
+          "type": "string"
+        },
+        "JSON": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Location"
+          }
+        }
+      },
+      "required": [
+        "result"
+      ]
+    },
+    "Location": {
+      "properties": {
+        "user_id": {
+          "type": "string"
+        },
+        "capture_date": {
+          "type": "string"
+        },        
+        "latitude": {
+          "type": "number"
+        },
+        "longitude": {
+          "type": "number"
+        },
+        "status": {
+          "type": "string"
+        },
+        "created_by": {
+          "type": "string"
+        }
+      }
+    }  ,
+    "AttendanceList": {
+      "properties": {
+        "result": {
+          "type": "string"
+        },
+        "JSON": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Attendance"
+          }
+        }
+      },
+      "required": [
+        "result"
+      ]
+    },
+    "Attendance": {
+      "properties": {
+        "date": {
+          "type": "string"
+        },
+        "parking_slot": {
+          "type": "integer"
+        },
+        "bin_c": {
+          "type": "integer"
+        },
+        "user_id": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        }, 
+        "event": {
+          "type": "string"
+        },
+        "fence": {
+          "type": "string"
+        },    
+        "created_by": {
+          "type": "string"
+        },        
+        "updated_by": {
+          "type": "string"
+        }
+      }
+    },
+    "SOSList": {
+      "properties": {
+        "result": {
+          "type": "string"
+        },
+        "JSON": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/SOS"
+          }
+        }
+      },
+      "required": [
+        "result"
+      ]
+    },
+    "SOS": {
+      "properties": {       
+        "sos_timestamp": {
+          "type": "string"
+        },
+        "sos_by": {
+          "type": "string"
+        },
+        "sos_text": {
+          "type": "string"
+        },
+        "respondant_user_id": {
+          "type": "string"
+        },
+        "respondant_name": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },       
+        "created_by": {
+          "type": "string"
+        },        
+        "updated_by": {
+          "type": "string"
+        }
+      }
+    },
+    "SOS_PUT": {
+      "properties": {        
+        "respondant_user_id": {
+          "type": "string"
+        },
+        "respondant_name": {
+          "type": "string"
+        },
+        "respondant_text": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },        
+        "updated_by": {
+          "type": "string"
+        }
+      }
+    },
+    "User": {
+      "properties": {
+        "full_name": {
+          "type": "string"
+        },
+        "using_car": {
+          "type": "boolean"
+        },
+        "user_id": {
+          "type": "string"
+        },
+        "mobileno": {
+          "type": "integer"
+        }		
+      }
+    },   
+    "Parking": {
+      "properties": {
+        "code": {
+          "type": "integer"
+        },
+        "availableSlotCount": {
+          "type": "integer"
+        }
+      }
+    },
+    "Alert": {
+      "properties": {
+        "alerts_text": {
+          "type": "string"
+        },
+        "alert_zone": {
+          "type": "string"
+        },
+		"created_by":{
+		"type":"string"
+		}
+      }
+    },	
+	"Geofence": {
+      "properties": {
+        "geofence_id": {
+          "type": "integer"
+        },
+        "geo_name": {
+          "type": "string"
+        },
+		"status":{
+			"type":"string"
+		}
+      }
+    },	
+	"User_PUT": {
+      "properties": {
+        "status": {
+          "type": "string"
+        }        
+      }
+    },	
+	"Alert_PUT": {
+      "properties": {
+        "status": {
+          "type": "string"
+        }        
+      }
+    }
+  }
+}
